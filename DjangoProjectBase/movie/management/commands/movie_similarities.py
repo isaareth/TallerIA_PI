@@ -7,15 +7,15 @@ from dotenv import load_dotenv
 
 class Command(BaseCommand):
     help = "Compare two movies and optionally a prompt using OpenAI embeddings"
-
+ 
     def handle(self, *args, **kwargs):
         # ✅ Load OpenAI API key
-        load_dotenv('../openAI.env')
-        client = OpenAI(api_key=os.environ.get('openai_apikey'))
+        load_dotenv('./openAI.env')
+        client = OpenAI(api_key=os.environ.get('openai_api_key'),)
 
         # ✅ Change these titles for any movies you want to compare
-        movie1 = Movie.objects.get(title="La lista de Schindler")
-        movie2 = Movie.objects.get(title="El club de la pelea")
+        movie1 = Movie.objects.get(title="The Woman Always Pays")
+        movie2 = Movie.objects.get(title="Frankenstein")
 
         def get_embedding(text):
             response = client.embeddings.create(

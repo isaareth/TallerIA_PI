@@ -2,7 +2,7 @@ import os
 import numpy as np
 from django.core.management.base import BaseCommand
 from movie.models import Movie
-from openai import OpenAI
+from openai import OpenAI 
 from dotenv import load_dotenv
 
 class Command(BaseCommand):
@@ -10,8 +10,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         # ✅ Load OpenAI API key
-        load_dotenv('../openAI.env')
-        client = OpenAI(api_key=os.environ.get('openai_apikey'))
+        load_dotenv('./openAI.env')
+        client = OpenAI(api_key=os.environ.get('openai_api_key'),)
 
         # ✅ Fetch all movies from the database
         movies = Movie.objects.all()
